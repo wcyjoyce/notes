@@ -19,6 +19,15 @@ yargs.command({
   }
 });
 
+// Command #3: List
+yargs.command({
+  command: "list",
+  describe: "List all notes",
+  handler: function() {
+    console.log("Listing all notes")
+  }
+});
+
 // Parse all arguments with yarg command calls
 yargs.parse();
 
