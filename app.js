@@ -10,6 +10,15 @@ yargs.command({
   }
 });
 
+// Command #2: Delete
+yargs.command({
+  command: "delete",
+  describe: "Delete a new note",
+  handler: function() {
+    console.log("Deleting a new note")
+  }
+});
+
 // Parse all arguments with yarg command calls
 yargs.parse();
 
