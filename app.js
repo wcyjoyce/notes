@@ -28,6 +28,15 @@ yargs.command({
   }
 });
 
+// Command #4: Read
+yargs.command({
+  command: "read",
+  describe: "Read a note",
+  handler: function() {
+    console.log("Reading a note")
+  }
+});
+
 // Parse all arguments with yarg command calls
 yargs.parse();
 
