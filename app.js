@@ -1,11 +1,14 @@
 // Packages
 const yargs = require("yargs");
 
+// Local Files
+const notes = require("./notes.js")
+
 // Command #1: Add
 yargs.command({
   command: "add",
   describe: "Add a new note",
-    builder: {
+  builder: {
     title: {
       describe: "Note Title",
       demandOption: true, // required argument
@@ -18,8 +21,10 @@ yargs.command({
     }
   },
   handler: function(argv) {
-    console.log("Title: " + argv.title);
-    console.log("Body: " + argv.body);
+    // console.log("Title: " + argv.title);
+    // console.log("Body: " + argv.body);
+
+    notes.addNote(argv.title, argv.body);
   }
 });
 
@@ -52,4 +57,3 @@ yargs.command({
 
 // Parse all arguments with yarg command calls
 yargs.parse();
-
