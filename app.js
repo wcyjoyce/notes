@@ -21,9 +21,6 @@ yargs.command({
     }
   },
   handler: function(argv) {
-    // console.log("Title: " + argv.title);
-    // console.log("Body: " + argv.body);
-
     notes.addNote(argv.title, argv.body);
   }
 });
@@ -32,8 +29,15 @@ yargs.command({
 yargs.command({
   command: "delete",
   describe: "Delete a new note",
-  handler: function() {
-    console.log("Deleting a new note")
+  builder: {
+    title: {
+      describe: "Note Title",
+      demandOption: true,
+      type: "string"
+    }
+  },
+  handler: function(argv) {
+    notes.deleteNote(argv.title);
   }
 });
 

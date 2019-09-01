@@ -31,7 +31,20 @@ const listNotes = () => {
   };
 };
 
+const deleteNote = title => {
+  const notes = listNotes();
+  const note = notes.filter(note => note.title === title);
+  if (note.length !== 0) {
+    notes.pop(note);
+    saveNotes(notes);
+    console.log("Note deleted: " + title);
+  } else {
+    console.log("Note not found.");
+  }
+};
+
 module.exports = {
   addNote: addNote,
-  listNotes: listNotes
+  listNotes: listNotes,
+  deleteNote: deleteNote
 };
