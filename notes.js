@@ -1,4 +1,5 @@
 const fs = require("fs");
+const chalk = require("chalk");
 
 const addNote = (title, body) => {
   const notes = listNotes();
@@ -37,9 +38,9 @@ const deleteNote = title => {
   if (note.length !== 0) {
     notes.pop(note);
     saveNotes(notes);
-    console.log("Note deleted: " + title);
+    console.log(chalk.green("Note deleted: " + title));
   } else {
-    console.log("Note not found.");
+    console.log(chalk.red("Note not found."));
   }
 };
 
