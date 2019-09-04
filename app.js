@@ -66,5 +66,26 @@ yargs.command({
   }
 });
 
+// Command #5: Update
+yargs.command({
+  command: "update",
+  describe: "Update a note",
+  builder: {
+    title: {
+      describe: "Note title",
+      demandOption: true,
+      type: "string"
+    },
+    body: {
+      describe: "Note body",
+      demandOption: true,
+      type: "string"
+    }
+  },
+  handler(argv) {
+    notes.updateNote(argv.title, argv.body);
+  }
+});
+
 // Parse all arguments with yarg command calls
 yargs.parse();

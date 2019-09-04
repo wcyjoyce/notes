@@ -29,6 +29,19 @@ const addNote = (title, body) => {
   };
 };
 
+const updateNote = (title, body) => {
+  const notes = loadNotes();
+  const note = notes.find(note => note.title === title);
+  if (note) {
+    notes.pop(note);
+    notes.push({ title, body });
+    saveNotes(notes);
+    console.log(chalk.green("Note updated!"));
+  } else {
+    console.log(chalk.red("Note not found."));
+  };
+};
+
 const deleteNote = title => {
   const notes = loadNotes();
   const note = notes.find(note => note.title === title);
@@ -61,5 +74,6 @@ module.exports = {
   listNotes: listNotes,
   fetchNote: fetchNote,
   addNote: addNote,
+  updateNote: updateNote,
   deleteNote: deleteNote
 };
