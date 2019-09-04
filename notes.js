@@ -11,6 +11,12 @@ const listNotes = () => {
   }
 };
 
+const fetchNote = title => {
+  const notes = loadNotes();
+  const note = notes.find(note => note.title === title);
+  note ? console.log(chalk.inverse(" " + note.title + " ")) + console.log(note.body) : console.log(chalk.red("Note not found."));
+};
+
 const addNote = (title, body) => {
   const notes = loadNotes();
   const duplicate = notes.find(note => note.title === title); // checking to see if there are any duplicates
@@ -53,6 +59,7 @@ const loadNotes = () => {
 
 module.exports = {
   listNotes: listNotes,
+  fetchNote: fetchNote,
   addNote: addNote,
   deleteNote: deleteNote
 };
