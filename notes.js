@@ -1,6 +1,16 @@
 const fs = require("fs");
 const chalk = require("chalk");
 
+const listNotes = () => {
+  const notes = loadNotes();
+  if (notes.length !== 0) {
+    console.log(chalk.inverse(" You have " + notes.length + " notes: "));
+    notes.forEach(note => console.log("- " + note.title + ": " + note.body));
+  } else {
+    console.log("You have no notes.")
+  }
+};
+
 const addNote = (title, body) => {
   const notes = loadNotes();
   const duplicate = notes.find(note => note.title === title); // checking to see if there are any duplicates
@@ -42,6 +52,7 @@ const loadNotes = () => {
 };
 
 module.exports = {
+  listNotes: listNotes,
   addNote: addNote,
   deleteNote: deleteNote
 };
